@@ -12,5 +12,9 @@ describe "HomePages" do
     it { should have_selector('title', text: 'Office Calendar - Admin')}
     it { should have_content('welcome to OfficeCalendar')}
   end
+  describe 'create action for holiday' do
+    before { visit create_holiday_path, :post }
+    it { should be_valid}
+  end
 
 end
