@@ -7,4 +7,9 @@ describe "HomePages" do
     it { should have_content('Welcome to Office Calendar')}
     it { should have_content(Date.today.strftime('%B'))}
   end
+  describe 'admin page' do
+    before { visit admin_path }
+    it { should have_selector('title', text: 'Office Calendar - Admin')}
+    it { should have_content('Hai Admin')}
+  end
 end
