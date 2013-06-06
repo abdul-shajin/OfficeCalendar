@@ -1,11 +1,11 @@
 <% provide(:title, 'Office Calendar - Admin') %>
 <div class="muted"><h3>Hi <%= @admin[:name] %>, welcome to OfficeCalendar admin page</h3></div>
 
-<%= form_for(@holiday, :url => create_holiday_path :html => {class:'form-horizontal'}) do |f| %>
+<%= form_for(@holiday, :url => create_holiday_path ,:html => {class:'form-horizontal'}) do |f| %>
   <div class='control-group'>
     <%= f.label :date, class: 'control-label' %>
     <div class='controls'>
-      <%= f.date_select :date %>
+      <%= f.date_select :date, :end_year => 1.year.from_now.year, :start_year => Time.now.year %>
     </div>
   </div>
 
@@ -14,7 +14,31 @@
     <div class='controls'>
       <%= f.text_field :name %>
     </div>
+
+  </div>
+  <div class='control-group'>
+    <div class='controls'>
+        <%= f.submit 'Create Holiday', class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>
 
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Date</th>
+      <th>Holiday Name</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @holidays.each_with_index do |holiday, i| %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td><%= holiday.date %></td>
+      <td><%= holiday.name %></td>
+    </tr>
+<% end %>
+</tbody>
+</table>
 
