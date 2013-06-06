@@ -10,16 +10,16 @@ holiday = (doms) ->
   while i < doms.length
     $("." + doms[i]).fadeTo "slow", .4
     $("." + doms[i]).find("*").andSelf().unbind()
+    $('.'+ doms[i]).addClass('holiday_dim')
     i++
-
 
 $(document).ready ->
   $("#calendar").fullCalendar dayClick: (date, allDay, jsEvent, view) ->
     console.log "Clicked on the entire day: " + date
-    $(this).css "background-color", "red"
+    $(this).css "background-color", "CornflowerBlue"
   OffDaysParameter = txtProcess(OffDays)
-  console.log OffDaysParameter
   holiday(OffDaysParameter)
+
 
 
 
