@@ -4,5 +4,6 @@ describe "HomePages" do
   describe 'root page' do
     before { visit root_path }
     it { should have_selector('title', :text => 'Office Calendar') }
+    it { should have_content('Welcome to Office Calendar')}
   end
 end
