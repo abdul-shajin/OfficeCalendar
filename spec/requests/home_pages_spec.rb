@@ -10,6 +10,7 @@ describe "HomePages" do
   describe 'admin page' do
     before { visit admin_path }
     it { should have_selector('title', text: 'Office Calendar - Admin')}
-    it { should have_content('Hai Admin')}
+    it { should have_content('welcome to OfficeCalendar')}
   end
+
 end
