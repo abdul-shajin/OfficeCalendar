@@ -34,7 +34,7 @@ group :test do
   gem 'libnotify'
 end
 gem 'heroku'
-group :development do
+group :development, :test do
   gem 'sqlite3'
 end
 
