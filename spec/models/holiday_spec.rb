@@ -17,8 +17,8 @@ describe Holiday do
   end
 
    it 'should give correct date between ranges' do
-    hol = Holiday.holiday_between(1.month.ago,Date.tomorrow)
-    hol.date should be_between(1.month.ago,Date.tomorrow)
+    hol = Holiday.holiday_between(1.month.ago.to_date,Date.tomorrow)
+    hol.should include @holiday
    end
 
 end
