@@ -4,6 +4,6 @@ class Holiday < ActiveRecord::Base
   validates :name, :presence => true
 
   def self.holiday_between start_date,end_date
-    where(:date => start_date..end_date)
+    where(:date => start_date..end_date).select('date,name')
   end
 end

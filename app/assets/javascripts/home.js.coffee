@@ -12,13 +12,28 @@ holiday = (doms) ->
     $("." + doms[i]).find("*").andSelf().unbind()
     $('.'+ doms[i]).addClass('holiday_dim')
     i++
+highlightHoliday = (dates) ->
+#change bg
+#fade in,tool tip of name
+customHoliday = (data) ->
+  $.each data, (date, name) ->
+    $("td[data-date]='"+"2013-06-13"+"'").fadeTo "slow", .4
+    console.log 'index: ' + date + 'val : ' + name
 
 $(document).ready ->
   $("#calendar").fullCalendar
     dayClick: (date, allDay, jsEvent, view) ->
       console.log "Clicked on the entire day: " + date
       $(this).css "background-color", "CornflowerBlue"
-    events: '/holidays.json'
+    eventSources: [
+      url: '/holidays.json'
+      type: "GET"
+      error: ->
+        alert "there was an error while fetching events!"
+      success: (data) ->
+        console.log data
+        customHoliday(data)
+    ]
 
 
 $(document).on 'ready', document, ->
