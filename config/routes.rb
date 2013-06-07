@@ -51,6 +51,7 @@ OfficeCalendar::Application.routes.draw do
   root :to => 'home#index'
   get 'admin' => 'home#admin', as: 'admin'
   post 'admin' => 'home#create_holiday', as: 'create_holiday'
+  match 'holidays' => 'home#holidays'
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

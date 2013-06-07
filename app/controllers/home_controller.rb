@@ -16,4 +16,8 @@ class HomeController < ApplicationController
     @holiday.save
     redirect_to admin_path
   end
+
+  def holidays
+    render :json => Holiday.pluck(:date)
+  end
 end

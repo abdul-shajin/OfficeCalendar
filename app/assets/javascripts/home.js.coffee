@@ -14,13 +14,16 @@ holiday = (doms) ->
     i++
 
 $(document).ready ->
-  $("#calendar").fullCalendar dayClick: (date, allDay, jsEvent, view) ->
-    console.log "Clicked on the entire day: " + date
-    $(this).css "background-color", "CornflowerBlue"
+  $("#calendar").fullCalendar
+    dayClick: (date, allDay, jsEvent, view) ->
+      console.log "Clicked on the entire day: " + date
+      $(this).css "background-color", "CornflowerBlue"
+    events: '/holidays.json'
+
+
+$(document).on 'ready', document, ->
   OffDaysParameter = txtProcess(OffDays)
   holiday(OffDaysParameter)
-
-
 
 
 
