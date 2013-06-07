@@ -18,6 +18,8 @@ class HomeController < ApplicationController
   end
 
   def holidays
+    start_date = DateTime.strptime(params[:start],'%s')
+     end_date =  DateTime.strptime(params[:end],'%s')
     render :json => Holiday.pluck(:date)
   end
 end
