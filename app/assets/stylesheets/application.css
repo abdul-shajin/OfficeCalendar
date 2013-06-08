@@ -11,4 +11,16 @@
  *= require_self
  *= require_tree .
  *= require jquery.ui.datepicker
+ * require jquery.ui.tooltip
  */
+.ui-tooltip {
+  padding: 8px;
+  position: fixed !important;
+  z-index: 9999;
+  max-width: 10px;
+  -webkit-box-shadow: 0 0 5px #aaa;
+  box-shadow: 0 0 5px #aaa;
+}
+body .ui-tooltip {
+  border-width: 2px;
+}

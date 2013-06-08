@@ -20,14 +20,15 @@ customHoliday = (data) ->
   OffDaysParameter = txtProcess(OffDays)
   holiday(OffDaysParameter)
   $.each data[1], (date, name) ->
-    $("td[data-date='" + date + "']").addClass('off-day')
-    $("td[data-date='" + date + "']").fadeTo "slow", .4
     $("td[data-date='" + date + "']").css('background-color','yellow')
-
+    $("td[data-date='" + date + "']").fadeTo "slow", .4
+    $("td[data-date='" + date + "']").attr "title", name
+    $("td[data-date='" + date + "']").tooltip
+      position:
+        my: "right bottom+50"
 $(document).ready ->
   $("#calendar").fullCalendar
     dayClick: (date, allDay, jsEvent, view) ->
-      console.log "Clicked on the entire day: " + date
       $(this).css "background-color", "CornflowerBlue"
     eventSources: [
       url: '/holidays.json'
@@ -35,7 +36,6 @@ $(document).ready ->
       error: ->
         alert "there was an error while fetching events!"
       success: (data) ->
-        console.log data
         customHoliday(data)
     ]
 
