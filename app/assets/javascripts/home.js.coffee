@@ -16,9 +16,12 @@ highlightHoliday = (dates) ->
 #change bg
 #fade in,tool tip of name
 customHoliday = (data) ->
-  $.each data, (date, name) ->
-    $("td[data-date]='"+"2013-06-13"+"'").fadeTo "slow", .4
-    console.log 'index: ' + date + 'val : ' + name
+  OffDays = data[0]
+  OffDaysParameter = txtProcess(OffDays)
+  holiday(OffDaysParameter)
+  $.each data[1], (date, name) ->
+    $("td[data-date='" + date + "']").fadeTo "slow", .4
+    $("td[data-date='" + date + "']").css('background-color','yellow')
 
 $(document).ready ->
   $("#calendar").fullCalendar
@@ -36,9 +39,12 @@ $(document).ready ->
     ]
 
 
-$(document).on 'ready', document, ->
-  OffDaysParameter = txtProcess(OffDays)
-  holiday(OffDaysParameter)
+  $ ->
+    range_start = new Date("April 1, 2013")
+    range_end = new Date("March 31, 2014")
+    $("#holiday_date").datepicker
+      minDate: range_start
+      maxDate: range_end
 
 
 

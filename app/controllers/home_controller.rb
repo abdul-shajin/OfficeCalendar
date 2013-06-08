@@ -21,7 +21,7 @@ class HomeController < ApplicationController
     start_date = DateTime.strptime(params[:start],'%s')
      end_date =  DateTime.strptime(params[:end],'%s')
      holiday_dates = Holiday.holiday_between start_date, end_date
-     holiday_dates_hash = hash_from_holiday_object(holiday_dates)
+     holiday_dates_hash = [Holiday::OFF_DAYS, hash_from_holiday_object(holiday_dates)]
     render :json => holiday_dates_hash
   end
 

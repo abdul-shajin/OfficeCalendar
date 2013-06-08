@@ -22,6 +22,7 @@ end
 
 gem 'jquery-rails'
 gem "twitter-bootstrap-rails"
+gem 'jquery-ui-rails'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.2'

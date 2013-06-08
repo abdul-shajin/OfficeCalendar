@@ -5,10 +5,9 @@
   <div class='control-group'>
     <%= f.label :date, class: 'control-label' %>
     <div class='controls'>
-      <%= f.date_select :date, :end_year => 1.year.from_now.year, :start_year => Time.now.year %>
+     <%= f.text_field :date, class: 'datepicker' %>
     </div>
   </div>
-
   <div class='control-group'>
     <%= f.label :name, class: 'control-label' %>
     <div class='controls'>
@@ -41,4 +40,6 @@
 <% end %>
 </tbody>
 </table>
-
+<script type='text/javascript'>
+var OffDays = <%= ['sat','sun'].to_json.html_safe %>;
+</script>
