@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    @off_days = ["sun","sat"]
+    @holiday_around = Holiday.holiday_around.group_by{|hol| hol.date.month }
   end
 
   def admin
@@ -12,8 +12,8 @@ class HomeController < ApplicationController
 
   def create_holiday
     p params.inspect
-    @holiday = Holiday.new(params[:holiday])
-    @holiday.save
+    @holiday = Holiday.new(name: params[:holiday][:name], date: params[:holiday][:date].to_date)
+    @holiday.save!
     redirect_to admin_path
   end
 

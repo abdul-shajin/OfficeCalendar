@@ -20,6 +20,7 @@ customHoliday = (data) ->
   OffDaysParameter = txtProcess(OffDays)
   holiday(OffDaysParameter)
   $.each data[1], (date, name) ->
+    $("td[data-date='" + date + "']").addClass('off-day')
     $("td[data-date='" + date + "']").fadeTo "slow", .4
     $("td[data-date='" + date + "']").css('background-color','yellow')
 
@@ -39,12 +40,10 @@ $(document).ready ->
     ]
 
 
-  $ ->
-    range_start = new Date("April 1, 2013")
-    range_end = new Date("March 31, 2014")
-    $("#holiday_date").datepicker
-      minDate: range_start
-      maxDate: range_end
-
-
-
+$ ->
+  range_start = new Date("April 1, 2013")
+  range_end = new Date("March 31, 2014")
+  $("#holiday_date").datepicker
+    dateFormat: 'dd/mm/yy'
+    minDate: range_start
+    maxDate: range_end

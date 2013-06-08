@@ -1,6 +1,18 @@
 <%= provide(:title, 'Office Calendar') %>
+<div class='span9'>
 <div class='top_header'><h3>Welcome to Office Calendar<h3></div>
 <div id='calendar'></div>
-<script type='text/javascript'>
-//var OffDays = <%= @off_days.to_json.html_safe %>;
-</script>
+</div>
+<div class="span3">
+            <div class="well sidebar-nav pull-right">
+              <h3>Holidays</h3>
+              <ul class="nav nav-list">
+                <% @holiday_around.each do |month, holidays| %>
+                  <li class="nav-header"><%= Date::MONTHNAMES[month] %></li>
+                  <% holidays.each do |holiday| %>
+                    <%= "#{holiday.date.to_date}   =>   #{holiday.name}" %>
+                  <% end %>
+                  <% end %>
+              </ul>
+            </div><!--/.well -->
+</div><!--/span-->

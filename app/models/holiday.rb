@@ -9,4 +9,8 @@ class Holiday < ActiveRecord::Base
   def self.holiday_between start_date,end_date
     where(:date => start_date..end_date).select('date,name')
   end
+
+  def self.holiday_around
+    where(:date => 1.month.ago.beginning_of_month.to_date..1.month.from_now.end_of_month.to_date)
+  end
 end

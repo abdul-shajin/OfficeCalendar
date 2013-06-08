@@ -34,7 +34,7 @@
 <% @holidays.each_with_index do |holiday, i| %>
     <tr>
       <td><%= i + 1 %></td>
-      <td><%= holiday.date %></td>
+      <td><%= holiday.date.to_date %></td>
       <td><%= holiday.name %></td>
     </tr>
 <% end %>
