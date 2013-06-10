@@ -11,8 +11,7 @@ class HomeController < ApplicationController
   end
 
   def create_holiday
-    p params.inspect
-    @holiday = Holiday.new(name: params[:holiday][:name], date: params[:holiday][:date].to_date)
+    @holiday = Holiday.new(params[:holiday]).merge!(date: params[:holiday][:date].to_date)
     @holiday.save!
     redirect_to admin_path
   end
